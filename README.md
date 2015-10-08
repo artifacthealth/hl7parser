@@ -32,6 +32,8 @@ var message = hl7parser.create("MSH|^~\&|||||20121031232617||ADT^A04|20381|P|2.3
 console.log(message.get("PID.5.2")); // prints "Bob"
 ```
 
+See the [tests](https://github.com/artifacthealth/hl7parser/blob/master/tests/message.tests.ts) for more examples.
+
 
 ## Documentation
 
