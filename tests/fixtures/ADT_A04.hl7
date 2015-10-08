@@ -1,0 +1,8 @@
+MSH|^~\&|APP^APP^GUID||APP^APP^GUID||20121031232617||ADT^A04|20381|P|2.3||||NE
+EVN|A04|20121031162617||01
+PID|1|16194|16194||Jones^Bob||19110302014500|F|||5432 Main St^^Sacramento^CA^95608||(916)555-1212^^^email@gmail.com|||M||||||||||||||N
+PV1|1|O|
+GT1|1|15840|Jones^Bob||0000 Main St^^Sacramento^CA^0000|(916)555-1212||19560302000000|F||S
+IN1|1||176|Blue Cross of CA^^^^^&176|P.O. Box 60007^^Los Angeles^CA^00000^USA||(000)000-0000|||||||||Jones^Bob|S|19500302000000|0000 Main St^^Sacramento^CA^00000||IN|1|||N||||||||||||0||||||F||NV
+IN1|2||176|Colorado HealthOP^^^^^&176|Some street address^^Boulder^CO^80466^USA||(303)555-1212|||||||||Jones^Bob|S|19500302000000|0000 Main St^^Sacramento^CA^00000||IN|1|||N||||||||||||0||||||F||NV
+IN2||||||||||||||||||||||||||||||0^0^365|||||||||||||||||||||||||||||||||(916)555-1212

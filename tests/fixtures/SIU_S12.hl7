@@ -1,0 +1,8 @@
+MSH|^~\&|APP^APP^GUID||APP^APP^GUID||20121031225216||SIU^S12|20379|P|2.3||||NE
+SCH|5196^5196|5196^5196|||||Established patient follow up|Established patient follow up|15|m|^^900^20121031084500^20121031090000|||||^bjones||||^bjones|||||Booked
+PID|1|3093~123123|3093|1273462894723|Gottlieb^Meir||19110727|M|||123 Park Place^^Long Beach^CA^00000^USA||(916)555-1111||English||||123-45-6789|||U||||||||N
+PV1|1|O|Ri\R\ver Oaks^something||||448^Jones^Bob^R.^MD^^^^&&UPIN~550^Smith^Joe^C.^MD^^^^&&UPIN|||||||||||||||||||||||||||||||||||||||||||5196
+RGS|1|A|5196
+AIG|1||448^Jones MD, Bob R.|||||20121031084500|||15|minutes
+AIL|1||^^^3|Place of Service
+AIP|1||448^Jones^Bob^R.^MD|Doctor||20121031084500|||15|minutes

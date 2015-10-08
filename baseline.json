@@ -1,0 +1,11 @@
+{
+  "suites": {
+    "Message": {
+      "tests": {
+        "parse fields": 18532.448528293633,
+        "iterate segments": 482357.9622689034
+      }
+    }
+  },
+  "timestamp": 1444310364434
+}
