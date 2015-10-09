@@ -57,11 +57,10 @@ __Returns:__ `Message`
 
 
 <a name="Message" />
-### Message Interface
+### Message Interface extends [`Node`](#Node)
 --------------------
 An HL7 message.
 * [`addSegment`](#addSegment)
-* [`name`](#name)
 * [`length`](#length)
 * [`get`](#get)
 * [`set`](#set)
@@ -71,14 +70,10 @@ An HL7 message.
 * [`toRaw`](#toRaw)
 * [`toArray`](#toArray)
 * [`isEmpty`](#isEmpty)
-* [`toDate`](#toDate)
-* [`toInteger`](#toInteger)
-* [`toFloat`](#toFloat)
-* [`toBoolean`](#toBoolean)
 
 <a name="addSegment" />
 #### addSegment(path)
-Adds a segment to the message.
+Adds a Segment to the Message.
 
 __Parameters__
 * path `string`  - The name of the segment to add (e.g. "PID").
@@ -86,16 +81,9 @@ __Parameters__
 __Returns:__ `Node`
 
 
-<a name="name" />
-#### name
-The name of the node.
-
-__Type:__ `string`
-
-
 <a name="length" />
 #### length
-The number of child nodes in the node.
+The number of Segments in the Message.
 
 __Type:__ `number`
 
@@ -134,7 +122,7 @@ __Returns:__ `boolean`
 
 <a name="forEach" />
 #### forEach(callback)
-Iterates through all child nodes, calling the callback for each node. Similar to Array.forEach.
+Iterates through all segments, calling the callback for each segment. Similar to Array.forEach.
 
 __Parameters__
 * callback - The function to call for each child node.
@@ -144,63 +132,30 @@ __Returns:__ `void`
 
 <a name="toString" />
 #### toString()
-Returns a string representation of the node. If the node has child nodes then the raw representation of the
-node is returned; otherwise, the value of the node is returned with escape sequences resolved.
+Returns a string representation of the Message. In the case of a Message, returns the same value as toRaw.
 
 __Returns:__ `string`
 
 
 <a name="toRaw" />
 #### toRaw()
-Returns the raw string representation of the node, including delimiters and escape sequences.
+Returns the raw string representation of the Message, including delimiters and escape sequences.
 
 __Returns:__ `string`
 
 
 <a name="toArray" />
 #### toArray()
-Returns all child nodes as an array.
+Returns all Segments as an array.
 
 __Returns:__ `Node[]`
 
 
 <a name="isEmpty" />
 #### isEmpty()
-Returns true if the node is empty; otherwise, returns false.
+Returns true if the Message is empty; otherwise, returns false.
 
 __Returns:__ `boolean`
-
-
-<a name="toDate" />
-#### toDate()
-Returns the value of the node as a date. If the length of the string is exactly 8, the value is parsed using
-the format YYYYMMDD. If the length of the string is >= 14, the value is parsed using the format YYYYMMDDHHMMSS.
-
-__Returns:__ `Date`
-
-
-<a name="toInteger" />
-#### toInteger()
-Returns the value of the node as an integer.
-
-__Returns:__ `number`
-
-
-<a name="toFloat" />
-#### toFloat()
-Returns the value of the node as a floating point number.
-
-__Returns:__ `number`
-
-
-<a name="toBoolean" />
-#### toBoolean()
-Returns the value of the node as a boolean. A value of "Y" is returned as true. A value of "N" is returned
-as false. All other values return null.
-
-__Returns:__ `boolean`
-
-
 
 
 <a name="Node" />
