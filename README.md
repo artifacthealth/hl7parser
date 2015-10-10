@@ -67,13 +67,11 @@ An HL7 message.
 * [`exists`](#exists)
 * [`forEach`](#forEach)
 * [`toString`](#toString)
-* [`toRaw`](#toRaw)
 * [`toArray`](#toArray)
-* [`isEmpty`](#isEmpty)
 
 <a name="addSegment" />
 #### addSegment(path)
-Adds a Segment to the Message.
+Adds a segment to the Message and returns the segment Node.
 
 __Parameters__
 * path `string`  - The name of the segment to add (e.g. "PID").
@@ -83,28 +81,28 @@ __Returns:__ `Node`
 
 <a name="length" />
 #### length
-The number of Segments in the Message.
+The number of segments in the Message.
 
 __Type:__ `number`
 
 
 <a name="get" />
 #### get(path)
-Gets a child node with the given path.
+Gets a child Node with the given path.
 
 __Parameters__
-* path `string | number`  - The path of the child node to retrieve. The path can be a number or string. If the path is a
-number, then child node at the specified index is returned.
+* path `string | number`  - The path of the child Node to retrieve. The path can be a number or string. If the path is a
+number, then child Node at the specified index is returned.
 
 __Returns:__ `Node`
 
 
 <a name="set" />
 #### set(path, value)
-Sets a child node at the given path.
+Sets a child Node at the given path.
 
 __Parameters__
-* path `string`  - The path of the child node to set.
+* path `string`  - The path of the child Node to set.
 * value `any`  - The value to set at the given path.
 
 __Returns:__ `void`
@@ -112,7 +110,7 @@ __Returns:__ `void`
 
 <a name="exists" />
 #### exists(path)
-Checks if a child node exists at the given path.
+Checks if a child Node exists at the given path.
 
 __Parameters__
 * path `string | number`  - That path to check.
@@ -125,43 +123,29 @@ __Returns:__ `boolean`
 Iterates through all segments, calling the callback for each segment. Similar to Array.forEach.
 
 __Parameters__
-* callback - The function to call for each child node.
+* callback - The function to call for each child Node.
 
 __Returns:__ `void`
 
 
 <a name="toString" />
 #### toString()
-Returns a string representation of the Message. In the case of a Message, returns the same value as toRaw.
-
-__Returns:__ `string`
-
-
-<a name="toRaw" />
-#### toRaw()
-Returns the raw string representation of the Message, including delimiters and escape sequences.
+Returns the string representation of the Message.
 
 __Returns:__ `string`
 
 
 <a name="toArray" />
 #### toArray()
-Returns all Segments as an array.
+Returns all segments as an array.
 
 __Returns:__ `Node[]`
-
-
-<a name="isEmpty" />
-#### isEmpty()
-Returns true if the Message is empty; otherwise, returns false.
-
-__Returns:__ `boolean`
 
 
 <a name="Node" />
 ### Node Interface
 --------------------
-A node in an HL7 message. Can represent a message, segment, field, component, or sub-component.
+A Node in an HL7 message. Can represent a message, segment list, segment, field, field repetition, component, or sub-component.
 * [`name`](#name)
 * [`length`](#length)
 * [`get`](#get)
@@ -179,35 +163,35 @@ A node in an HL7 message. Can represent a message, segment, field, component, or
 
 <a name="name" />
 #### name
-The name of the node.
+The name of the Node.
 
 __Type:__ `string`
 
 
 <a name="length" />
 #### length
-The number of child nodes in the node.
+The number of child Nodes in the Node.
 
 __Type:__ `number`
 
 
 <a name="get" />
 #### get(path)
-Gets a child node with the given path.
+Gets a child Node with the given path.
 
 __Parameters__
-* path `string | number`  - The path of the child node to retrieve. The path can be a number or string. If the path is a
-number, then child node at the specified index is returned.
+* path `string | number`  - The path of the child Node to retrieve. The path can be a number or string. If the path is a
+number, then child Node at the specified index is returned.
 
 __Returns:__ `Node`
 
 
 <a name="set" />
 #### set(path, value)
-Sets a child node at the given path.
+Sets a child Node at the given path.
 
 __Parameters__
-* path `string`  - The path of the child node to set.
+* path `string`  - The path of the child Node to set.
 * value `any`  - The value to set at the given path.
 
 __Returns:__ `void`
@@ -215,7 +199,7 @@ __Returns:__ `void`
 
 <a name="exists" />
 #### exists(path)
-Checks if a child node exists at the given path.
+Checks if a child Node exists at the given path.
 
 __Parameters__
 * path `string | number`  - That path to check.
@@ -225,46 +209,46 @@ __Returns:__ `boolean`
 
 <a name="forEach" />
 #### forEach(callback)
-Iterates through all child nodes, calling the callback for each node. Similar to Array.forEach.
+Iterates through all child Nodes, calling the callback for each Node. Similar to Array.forEach.
 
 __Parameters__
-* callback - The function to call for each child node.
+* callback - The function to call for each child Node.
 
 __Returns:__ `void`
 
 
 <a name="toString" />
 #### toString()
-Returns a string representation of the node. If the node has child nodes then the raw representation of the
-node is returned; otherwise, the value of the node is returned with escape sequences resolved.
+Returns a string representation of the Node. If the Node has child Nodes then the raw representation of the
+Node is returned; otherwise, the value of the Node is returned with escape sequences resolved.
 
 __Returns:__ `string`
 
 
 <a name="toRaw" />
 #### toRaw()
-Returns the raw string representation of the node, including delimiters and escape sequences.
+Returns the raw string representation of the Node, including delimiters and escape sequences.
 
 __Returns:__ `string`
 
 
 <a name="toArray" />
 #### toArray()
-Returns all child nodes as an array.
+Returns all child Nodes as an array.
 
 __Returns:__ `Node[]`
 
 
 <a name="isEmpty" />
 #### isEmpty()
-Returns true if the node is empty; otherwise, returns false.
+Returns true if the Node is empty; otherwise, returns false.
 
 __Returns:__ `boolean`
 
 
 <a name="toDate" />
 #### toDate()
-Returns the value of the node as a date. If the length of the string is exactly 8, the value is parsed using
+Returns the value of the Node as a date. If the length of the string is exactly 8, the value is parsed using
 the format YYYYMMDD. If the length of the string is >= 14, the value is parsed using the format YYYYMMDDHHMMSS.
 
 __Returns:__ `Date`
@@ -272,21 +256,21 @@ __Returns:__ `Date`
 
 <a name="toInteger" />
 #### toInteger()
-Returns the value of the node as an integer.
+Returns the value of the Node as an integer.
 
 __Returns:__ `number`
 
 
 <a name="toFloat" />
 #### toFloat()
-Returns the value of the node as a floating point number.
+Returns the value of the Node as a floating point number.
 
 __Returns:__ `number`
 
 
 <a name="toBoolean" />
 #### toBoolean()
-Returns the value of the node as a boolean. A value of "Y" is returned as true. A value of "N" is returned
+Returns the value of the Node as a boolean. A value of "Y" is returned as true. A value of "N" is returned
 as false. All other values return null.
 
 __Returns:__ `boolean`
