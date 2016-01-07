@@ -12,7 +12,7 @@ HL7Parser is a CommonJS module for working with [HL7 2.x](https://en.wikipedia.o
 * [`Documentation`](#Documentation)
 
 
-<a name="installation" />
+<a name="installation"></a>
 ## Installation
 
 HL7Parser can be installed using [npm](https://www.npmjs.com/):
