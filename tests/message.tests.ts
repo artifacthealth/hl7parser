@@ -121,7 +121,23 @@ describe('Message', () => {
             var message = new Message();
             message.set("PV1", [1, 2, 3, [4, 5, 6]]);
             assert.equal(message.toString(), "MSH|^~\\&\rPV1|1|2|3|4^5^6");
-        });        
+        });
+
+        it("treats null as empty value", () => {
+
+            var message = new Message();
+            message.set("PV1.1", null);
+            message.set("PV1.2", "something");
+            assert.equal(message.toString(), "MSH|^~\\&\rPV1||something");
+        });
+
+        it("treats undefined as empty value", () => {
+
+            var message = new Message();
+            message.set("PV1.1", undefined);
+            message.set("PV1.2", "something");
+            assert.equal(message.toString(), "MSH|^~\\&\rPV1||something");
+        });
     });
 
     describe('addSegment', () => {

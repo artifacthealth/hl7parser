@@ -168,11 +168,8 @@ class NodeBase {
     }
 
     write(path: string[], value: string): void {
-        if (value == null) {
-            throw new Error("Argument 'value' cannot be null.");
-        }
         this._dirty = true;
-        this.writeCore(path, value);
+        this.writeCore(path, value == null ? "" : value);
     }
 
     protected writeCore(path: string[], value: string): void {
