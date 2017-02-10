@@ -30,12 +30,16 @@ describe('ValueNode', () => {
 
     describe('toDate', () => {
 
-        it('should convert long date to a Date', () => {
-            assert.deepEqual(new Message("MSH|^~\\&|20121031225113").get("MSH.3").toDate(), new Date(2012, 9, 31, 22, 51, 13));
+        it('should convert date in format YYYYMMDD to a Date', () => {
+            assert.deepEqual(new Message("MSH|^~\\&|20121031").get("MSH.3").toDate(), new Date(2012, 9, 31, 0, 0, 0));
         });
 
-        it('should convert short date to a Date', () => {
-            assert.deepEqual(new Message("MSH|^~\\&|20121031").get("MSH.3").toDate(), new Date(2012, 9, 31));
+        it('should convert date in format YYYYMMDDHHMM to a Date', () => {
+            assert.deepEqual(new Message("MSH|^~\\&|201210312251").get("MSH.3").toDate(), new Date(2012, 9, 31, 22, 51, 0));
+        });
+
+        it('should convert date in format YYYYMMDDHHMMSS to a Date', () => {
+            assert.deepEqual(new Message("MSH|^~\\&|20121031225113").get("MSH.3").toDate(), new Date(2012, 9, 31, 22, 51, 13));
         });
     });
 

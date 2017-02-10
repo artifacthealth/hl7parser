@@ -23,9 +23,15 @@ class ValueNode extends NodeBase {
         var text = this.toString();
 
         if(text.length == 8) {
+            // YYYYMMDD
             return new Date(parseInt(text.slice(0, 4)), parseInt(text.slice(4, 6)) - 1, parseInt(text.slice(6, 8)), 0, 0, 0);
         }
+        else if(text.length == 12) {
+            // YYYYMMDDHHMM
+            return new Date(parseInt(text.slice(0, 4)), parseInt(text.slice(4, 6)) - 1, parseInt(text.slice(6, 8)), parseInt(text.slice(8, 10)), parseInt(text.slice(10, 12)), 0);
+        }
         else if(text.length >= 14) {
+            // YYYYMMDDHHMMSS
             return new Date(parseInt(text.slice(0, 4)), parseInt(text.slice(4, 6)) - 1, parseInt(text.slice(6, 8)), parseInt(text.slice(8, 10)), parseInt(text.slice(10, 12)), parseInt(text.slice(12, 14)));
         }
 
