@@ -325,7 +325,7 @@ class NodeBase implements Node {
 
     private _isSubPath(other: string[]): boolean {
 
-        if(this.path.length > other.length) return false;
+        if(this.path.length >= other.length) return false;
 
         var path = this.path;
         for(var i = 0, l = path.length; i < l; i++) {

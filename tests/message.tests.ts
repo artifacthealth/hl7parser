@@ -112,6 +112,21 @@ describe('Message', () => {
             assert.equal(message.toString(), "MSH|^~\\&\rPV1|||||||^Jones^John");
         });
 
+        it('can set field component by number and array', () => {
+            var message = new Message();
+            message.set("PV1.7").set(0, ["", "Jones", "John"]).set(1, ["", "Smith", "Bob"]);
+            assert.equal(message.toString(), "MSH|^~\\&\rPV1|||||||^Jones^John~^Smith^Bob");
+        });
+
+        it('throws error if chained path is not a sub-path of current node', () => {
+            var message = new Message();
+
+            assert.throw(() => {
+                message.set("PV1.7").set(0, ["", "Jones", "John"]).set("PV1.7").set(1, ["", "Smith", "Bob"]);
+
+            }, "'PV1,7' is not a sub-path of 'PV1,7'");
+        });
+
         it('can set segment by name', () => {
             var message = new Message();
             message.set("PV1").set("PV1.7.2", "Jones").set("PV1.7.3", "John");
