@@ -4,7 +4,7 @@ interface Node {
     length: number;
 
     get(path: string | number): Node;
-    set(path: string, value: any): void;
+    set(path: string | number, value?: any): Node;
 
     exists(path: string | number): boolean;
     forEach(callback: (value: Node, index: number) => void): void;
@@ -19,7 +19,7 @@ interface Node {
     toBoolean(): boolean;
 
     read(path: string[]): Node;
-    write(path: string[], value: string): void;
+    write(path: string[], value: string): Node;
     path: string[];
 }
 

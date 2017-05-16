@@ -176,14 +176,14 @@ class Message extends NodeBase {
         return null;
     }
 
-    protected writeCore(path: string[], value: string): void {
+    protected writeCore(path: string[], value: string): Node {
 
         var segmentName = path.shift();
         var index = this._getFirstSegmentIndex(segmentName);
         if(index === undefined) {
             index = this.children.length;
         }
-        this.writeAtIndex(path, value, index, segmentName);
+        return this.writeAtIndex(path, value, index, segmentName);
     }
 
     protected createChild(text: string, index: number): Node {

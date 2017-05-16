@@ -28,18 +28,20 @@ export interface Node {
     length: number;
 
     /**
-     * Gets a child node with the given path.
+     * Gets a child node with the given path. Note that if the path does not exist an EmptyNode is returned. The Node at the path is not
+     * created.
      * @param path The path of the child node to retrieve. The path can be a number or string. If the path is a
      * number, then child node at the specified index is returned.
      */
     get(path: string | number): Node;
 
     /**
-     * Sets a child node at the given path.
+     * Sets a child node at the given path. If the value is specified then the current Node is returned. If the value is not specified
+     * then the Node at the given path is returned.
      * @param path The path of the child node to set.
      * @param value The value to set at the given path.
      */
-    set(path: string, value: any): void;
+    set(path: string | number, value?: any): void;
 
     /**
      * Checks if a child node exists at the given path.

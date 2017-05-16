@@ -15,9 +15,9 @@ class Component extends ValueNode {
         return this.children[parseInt(path.shift())-1];
     }
 
-    protected writeCore(path: string[], value: string): void {
+    protected writeCore(path: string[], value: string): Node {
 
-        this.writeAtIndex(path, value, parseInt(path.shift())-1);
+        return this.writeAtIndex(path, value, parseInt(path.shift())-1);
     }
 
     protected createChild(text: string, index: number): Node {

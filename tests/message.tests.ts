@@ -75,12 +75,54 @@ describe('Message', () => {
             assert.equal(message.toString(), "MSH|^~\\&||||||||SIU^S12");
         });
 
-
         it('should be able to set more that one component on the same field', () => {
             var message = new Message();
             message.set("PV1.7.2", "Jones");
             message.set("PV1.7.3", "John");
             assert.equal(message.toString(), "MSH|^~\\&\rPV1|||||||^Jones^John");
+        });
+
+        it('should be able to set repeating field', () => {
+            var message = new Message();
+            message.set("PV1.7").set(0).set("PV1.7.2", "Jones").set("PV1.7.3", "John");
+            message.set("PV1.7").set(1).set("PV1.7.2", "Smith").set("PV1.7.3", "Bob");
+            assert.equal(message.toString(), "MSH|^~\\&\rPV1|||||||^Jones^John~^Smith^Bob");
+        });
+
+        it('can set field component by number', () => {
+            var message = new Message();
+            message.set("PV1.7").set(0).set(1, "Jones").set(2, "John");
+            assert.equal(message.toString(), "MSH|^~\\&\rPV1|||||||^Jones^John");
+        });
+
+        it('can set segment by name', () => {
+            var message = new Message();
+            message.set("PV1").set("PV1.7.2", "Jones").set("PV1.7.3", "John");
+            assert.equal(message.toString(), "MSH|^~\\&\rPV1|||||||^Jones^John");
+        });
+
+        it('flags parent as dirty when child is directly modified', () => {
+
+            var message = new Message();
+            message.get(0).set("MSH.3", "Test");
+            assert.equal(message.toString(), "MSH|^~\\&|Test");
+        });
+
+        it('can set a segment by number if it already exists', () => {
+
+            var message = new Message();
+            message.set(0).set("MSH.3", "Test");
+            assert.equal(message.toString(), "MSH|^~\\&|Test");
+        });
+
+        it('cannot set a segment by index if it does not already exist', () => {
+
+            var message = new Message();
+
+            assert.throw(() => {
+                message.set(1).set("PV1.7.3", "John");
+
+            }, "Segment must have a name.");
         });
 
         it('should set the specified sub-component', () => {

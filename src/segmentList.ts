@@ -24,9 +24,9 @@ class SegmentList extends NodeBase {
         return this._segments[0].read(path);
     }
 
-    protected writeCore(path: string[], value: string): void {
+    protected writeCore(path: string[], value: string): Node {
 
-        this._segments[0].write(path, value);
+        return this._segments[0].write(path, value);
     }
 
     protected pathCore(): string[] {

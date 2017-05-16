@@ -4,7 +4,7 @@ import Node = require("./node");
 import EmptyNode = require("./emptyNode");
 import Util = require("./util");
 
-class NodeBase {
+class NodeBase implements Node {
 
     protected parent: NodeBase;
 
@@ -43,18 +43,47 @@ class NodeBase {
         return ret || NodeBase.empty;
     }
 
-    set(path: string, value: any): void {
+    set(path: string | number, value?: any): Node {
 
-        if(Array.isArray(value)) {
-            // If the value is an array, write each item in the array using the index of the item as an additional
-            // step in the path.
-            for(var i = 0, l = value.length; i < l; i++) {
-                this.set(path + "." + (i + 1), value[i]);
+        // If there is only one argument we make sure the path exists and return it
+        if (arguments.length == 1) {
+            return this.ensure(path);
+        }
+
+        if (typeof path === "string") {
+
+            if (Array.isArray(value)) {
+                // If the value is an array, write each item in the array using the index of the item as an additional
+                // step in the path.
+                for (var i = 0, l = value.length; i < l; i++) {
+                    this.set(path + "." + (i + 1), value[i]);
+                }
             }
+            else {
+                this.write(this.preparePath(path), this.prepareValue(value));
+            }
+
+            return this;
         }
-        else {
-            this.write(this.preparePath(path), this.prepareValue(value));
+        else if (typeof path === "number") {
+
+            if (Array.isArray(value)) {
+                // If the value is an array, write each item in the array using the index of the item as an additional
+                // step in the path.
+                var child = this.ensure(path);
+                for (var i = 0, l = value.length; i < l; i++) {
+                    child.set(i, value[i]);
+                }
+                return this;
+            }
+            else {
+                this.setChild(this.createChild(this.prepareValue(value), path), path);
+            }
+
+            return this;
         }
+
+        throw new Error("Path must be a string or number.");
     }
 
     get name(): string {
@@ -119,6 +148,21 @@ class NodeBase {
         return null;
     }
 
+    protected ensure(path: string | number): Node {
+
+        var ret = this.get(path);
+        if (ret != NodeBase.empty) {
+            return ret;
+        }
+
+        if(typeof path === "number") {
+            return this.setChild(this.createChild("", path), path);
+        }
+        else if(typeof path === "string") {
+            return this.write(this.preparePath(path), "");
+        }
+    }
+
     protected preparePath(path: string): string[] {
         var parts = path.split(".");
         if(parts[0] == "") {
@@ -135,7 +179,7 @@ class NodeBase {
 
     protected prepareValue(value: any): string {
 
-        if(value == null) return null;
+        if(value == null) return "";
 
         if(typeof value === "string") {
             return this.message.escape(value);
@@ -167,12 +211,12 @@ class NodeBase {
         throw new Error("Not implemented");
     }
 
-    write(path: string[], value: string): void {
-        this._dirty = true;
-        this.writeCore(path, value == null ? "" : value);
+    write(path: string[], value: string): Node {
+        this.setDirty();
+        return this.writeCore(path, value == null ? "" : value);
     }
 
-    protected writeCore(path: string[], value: string): void {
+    protected writeCore(path: string[], value: string): Node {
         throw new Error("Not implemented.");
     }
 
@@ -181,7 +225,7 @@ class NodeBase {
         var child: Node;
 
         if(path.length == 0) {
-            child = this.createChild(value, index);
+            child = this.createChild(value || emptyValue, index);
         }
         else {
             // check if we already have a child at that index
@@ -197,7 +241,7 @@ class NodeBase {
         this.setChild(child, index);
 
         if(path.length != 0) {
-            child.write(path, value);
+            return child.write(path, value);
         }
 
         return child;
@@ -236,8 +280,7 @@ class NodeBase {
 
     protected addChild(text: string): Node {
 
-        this._dirty = true;
-
+        this.setDirty();
         var child = this.createChild(text, this.children.length);
         this.children.push(child);
         return child;
@@ -248,14 +291,16 @@ class NodeBase {
         throw new Error("Not implemented");
     }
 
-    protected setChild(child: Node, index: number): void {
+    protected setChild(child: Node, index: number): Node {
+
+        this.setDirty();
 
         var children = this.children;
 
         // if we already have a child at that index then replace it
         if(index < children.length) {
             children[index] = child;
-            return;
+            return child;
         }
 
         // otherwise, fill the @children array with empty children for any indexes between the end of the list
@@ -265,6 +310,17 @@ class NodeBase {
         }
 
         children.push(child);
+        return child;
+    }
+
+    protected setDirty(): void {
+
+        if (!this._dirty) {
+            this._dirty = true;
+            if (this.parent) {
+                this.parent.setDirty();
+            }
+        }
     }
 
     private _isSubPath(other: string[]): boolean {

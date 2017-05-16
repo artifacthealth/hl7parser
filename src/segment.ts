@@ -11,6 +11,10 @@ class Segment extends NodeBase {
     constructor(parent: NodeBase, text: string) {
         super(parent, text, Delimiters.Field);
 
+        if (typeof text !== "string" || text.length == 0) {
+            throw new Error("Segment must have a name.");
+        }
+
         this._segmentName = text.slice(0, 3);
     }
 
@@ -37,7 +41,7 @@ class Segment extends NodeBase {
         return field && path.length > 0 ? field.read(path) : field;
     }
 
-    protected writeCore(path: string[], value: string): void {
+    protected writeCore(path: string[], value: string): Node {
 
         var index = parseInt(path.shift());
         if(index < 1) return;
@@ -53,7 +57,7 @@ class Segment extends NodeBase {
             }
         }
 
-        this.writeAtIndex(path, value, index);
+        return this.writeAtIndex(path, value, index);
     }
 
     protected pathCore(): string[] {

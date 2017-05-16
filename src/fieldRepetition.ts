@@ -16,9 +16,9 @@ class FieldRepetition extends ValueNode {
         return component && path.length > 0 ? component.read(path) : component;
     }
 
-    protected writeCore(path: string[], value: string): void {
+    protected writeCore(path: string[], value: string): Node {
 
-        this.writeAtIndex(path, value, parseInt(path.shift())-1);
+        return this.writeAtIndex(path, value, parseInt(path.shift())-1);
     }
 
     protected pathCore(): string[] {

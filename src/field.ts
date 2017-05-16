@@ -10,11 +10,6 @@ class Field extends ValueNode {
         super(parent, key, text, Delimiters.Repetition);
     }
 
-    addRepetition(value: string = ""): void {
-
-        this.addChild(value);
-    }
-
     read(path: string[]): Node {
 
         if(this.children.length > 0) {
@@ -24,9 +19,9 @@ class Field extends ValueNode {
         return null;
     }
 
-    protected writeCore(path: string[], value: string): void {
+    protected writeCore(path: string[], value: string): Node {
 
-        this._ensureChild().write(path, value);
+        return this._ensureChild().write(path, value);
     }
 
     protected createChild(text: string, index: number): Node {

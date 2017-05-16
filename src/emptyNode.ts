@@ -14,8 +14,8 @@ class EmptyNode implements Node {
         return this;
     }
 
-    set(path: string, value: any): void {
-
+    set(path: string | number, value?: any): Node {
+        return this;
     }
 
     exists(path: string | number): boolean {
@@ -62,8 +62,8 @@ class EmptyNode implements Node {
         return null;
     }
 
-    write(path: string[], value: string): void {
-
+    write(path: string[], value: string): Node {
+        return this;
     }
 
     get path(): string[] {
