@@ -99,6 +99,13 @@ describe('Message', () => {
             assert.equal(message.toString(), "MSH|^~\\&\rPV1|||||||^Jones^John~^Smith^Bob");
         });
 
+        it('can chain component setters with numeric indexers', () => {
+            var message = new Message();
+            message.set("PV1.7").set(0).set(1, "Jones").set(2, "John");
+            message.set("PV1.7").set(1).set(1, "Smith").set(2, "Bob");
+            assert.equal(message.toString(), "MSH|^~\\&\rPV1|||||||^Jones^John~^Smith^Bob");
+        });
+
         it('can set field component by number', () => {
             var message = new Message();
             message.set("PV1.7").set(0).set(1, "Jones").set(2, "John");
