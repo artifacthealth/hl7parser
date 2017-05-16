@@ -82,7 +82,17 @@ describe('Message', () => {
             assert.equal(message.toString(), "MSH|^~\\&\rPV1|||||||^Jones^John");
         });
 
-        it('should be able to set repeating field', () => {
+        it('should be able to set repeating fields', () => {
+
+            var message = new Message();
+            message.set('PID.3').set(0).set('PID.3.1', 'abc');
+            message.set('PID.3').set(0).set('PID.3.5', 'MRN');
+            message.set('PID.3').set(1).set('PID.3.1', 123);
+            message.set('PID.3').set(1).set('PID.3.5', 'ID');
+            assert.equal(message.toString(), "MSH|^~\\&\rPID|||abc^^^^MRN~123^^^^ID");
+        });
+
+        it('can chain component setters', () => {
             var message = new Message();
             message.set("PV1.7").set(0).set("PV1.7.2", "Jones").set("PV1.7.3", "John");
             message.set("PV1.7").set(1).set("PV1.7.2", "Smith").set("PV1.7.3", "Bob");
