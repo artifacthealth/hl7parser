@@ -1,10 +1,10 @@
-import Node = require('./node');
-import Delimiters = require("./delimiters");
-import ValueNode = require("./valueNode");
-import SubComponent = require("./subComponent");
-import NodeBase = require('./nodeBase');
+import Node from './node';
+import Delimiters from "./delimiters";
+import ValueNode from "./valueNode";
+import SubComponent from "./subComponent";
+import NodeBase from './nodeBase';
 
-class Component extends ValueNode {
+export default class Component extends ValueNode {
 
     constructor(parent: NodeBase, key: string, text: string) {
         super(parent, key, text, Delimiters.SubComponent);
@@ -25,5 +25,3 @@ class Component extends ValueNode {
         return new SubComponent(this, (index + 1).toString(), text);
     }
 }
-
-export = Component;

@@ -1,10 +1,10 @@
-import Node = require('./node');
-import Delimiters = require("./delimiters");
-import ValueNode = require("./valueNode");
-import Component = require("./component");
-import NodeBase = require('./nodeBase');
+import Node from './node';
+import Delimiters from "./delimiters";
+import ValueNode from "./valueNode";
+import Component from "./component";
+import NodeBase from './nodeBase';
 
-class FieldRepetition extends ValueNode {
+export default class FieldRepetition extends ValueNode {
 
     constructor(parent: NodeBase, key: string, text: string) {
         super(parent, key, text, Delimiters.Component);
@@ -31,5 +31,3 @@ class FieldRepetition extends ValueNode {
         return new Component(this, (index + 1).toString(), text);
     }
 }
-
-export = FieldRepetition;

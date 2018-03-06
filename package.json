@@ -16,6 +16,7 @@
     }
   ],
   "main": "lib/index.js",
+  "typings": "lib/hl7parser.d.ts",
   "scripts": {
     "test": "grunt"
   },
@@ -30,9 +31,8 @@
     "grunt-dts-concat": "^0.1.10",
     "grunt-mocha-test": "^0.12.2",
     "grunt-ts-clean": "^0.2.0",
-    "grunt-typescript": "0.6.1",
-    "mocha": "^2.0.1",
-    "typescript": "1.4.1"
+    "grunt-typescript": "0.8.0",
+    "mocha": "^2.0.1"
   },
   "tonicExampleFilename": "example.js",
   "keywords": [

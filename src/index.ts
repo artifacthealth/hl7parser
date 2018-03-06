@@ -1,4 +1,4 @@
-import MessageImpl = require("./message");
+import MessageImpl from "./message";
 
 /**
  * An HL7 message.
