@@ -1,11 +1,10 @@
 /// <reference path="../typings/baseline.d.ts" />
-
-import MessageHelper from "../tests/messageHelper";
 import Message from "../src/message";
+import {getMessageText} from "../tests/messageHelper";
 
 suite("Message", () => {
 
-    var messageText = MessageHelper.getMessageText("ADT_A04");
+    var messageText = getMessageText("ADT_A04");
 
     test("parse fields", () => {
 
