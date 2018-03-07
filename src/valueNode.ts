@@ -1,8 +1,8 @@
-import Node = require("./node");
-import NodeBase = require('./nodeBase');
-import Delimiters = require("./delimiters");
+import Node from "./node";
+import NodeBase from './nodeBase';
+import Delimiters from "./delimiters";
 
-class ValueNode extends NodeBase {
+export default class ValueNode extends NodeBase {
 
     protected key: string;
 
@@ -65,5 +65,3 @@ class ValueNode extends NodeBase {
         return this.parent.path.concat([this.key]);
     }
 }
-
-export = ValueNode;

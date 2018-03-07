@@ -1,10 +1,10 @@
-import Delimiters = require("./delimiters");
-import Message = require("./message");
-import Node = require("./node");
-import EmptyNode = require("./emptyNode");
-import Util = require("./util");
+import Delimiters from "./delimiters";
+import Message from "./message";
+import Node from "./node";
+import EmptyNode from "./emptyNode";
+import * as Util from "./util";
 
-class NodeBase implements Node {
+export default class NodeBase implements Node {
 
     protected parent: NodeBase;
 
@@ -203,7 +203,7 @@ class NodeBase implements Node {
     protected get message(): Message {
 
         if(this._message) return this._message;
-        return this._message = this.parent ? this.parent.message : <Message>this;
+        return this._message = this.parent ? this.parent.message : <any>this;
     }
 
     read(path: string[]): Node {
@@ -356,5 +356,3 @@ class NodeBase implements Node {
         return date.getFullYear().toString() + Util.pad(date.getMonth() + 1, 2) + Util.pad(date.getDate(), 2);
     }
 }
-
-export = NodeBase;

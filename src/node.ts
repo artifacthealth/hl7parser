@@ -23,4 +23,4 @@ interface Node {
     path: string[];
 }
 
-export = Node;
+export default Node;

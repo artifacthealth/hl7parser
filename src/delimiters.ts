@@ -1,5 +1,4 @@
-declare const enum Delimiters {
-
+enum Delimiters {
     Segment,
     Field,
     Component,
@@ -8,4 +7,4 @@ declare const enum Delimiters {
     SubComponent
 }
 
-export = Delimiters;
+export default Delimiters;

@@ -1,10 +1,10 @@
-import Node = require("./node");
-import NodeBase = require('./nodeBase');
-import Delimiters = require("./delimiters");
-import Field = require("./field");
-import SubComponent = require("./subComponent");
+import Node from "./node";
+import NodeBase from './nodeBase';
+import Delimiters from "./delimiters";
+import Field from "./field";
+import SubComponent from "./subComponent";
 
-class Segment extends NodeBase {
+export default class Segment extends NodeBase {
 
     private _segmentName: string;
 
@@ -70,5 +70,3 @@ class Segment extends NodeBase {
         return new Field(this, index.toString(), text);
     }
 }
-
-export = Segment;

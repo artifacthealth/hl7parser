@@ -1,8 +1,8 @@
-import Node = require("./node");
-import NodeBase = require('./nodeBase');
-import Segment = require("./segment");
+import Node from "./node";
+import NodeBase from './nodeBase';
+import Segment from "./segment";
 
-class SegmentList extends NodeBase {
+export default class SegmentList extends NodeBase {
 
     private _segments: Segment[];
 
@@ -39,5 +39,3 @@ class SegmentList extends NodeBase {
         return this._segments;
     }
 }
-
-export = SegmentList;

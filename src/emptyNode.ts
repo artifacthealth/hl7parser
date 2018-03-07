@@ -1,6 +1,6 @@
-import Node = require("./node");
+import Node from "./node";
 
-class EmptyNode implements Node {
+export default class EmptyNode implements Node {
 
     get name(): string {
         return null;
@@ -70,5 +70,3 @@ class EmptyNode implements Node {
         throw new Error("Not implemented");
     }
 }
-
-export = EmptyNode;

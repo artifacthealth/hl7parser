@@ -1,7 +1,7 @@
 /// <reference path="../typings/baseline.d.ts" />
 
-import MessageHelper = require("../tests/messageHelper");
-import Message = require("../src/message");
+import MessageHelper from "../tests/messageHelper";
+import Message from "../src/message";
 
 suite("Message", () => {
 

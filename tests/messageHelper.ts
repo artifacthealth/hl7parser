@@ -1,7 +1,7 @@
 /// <reference path="../typings/node.d.ts"/>
 
-import fs = require("fs");
-import Message = require("../src/message");
+import * as fs from "fs";
+import Message from "../src/message";
 
 export function createSiuS12Message(): Message {
     return createHl7Message("SIU_S12");

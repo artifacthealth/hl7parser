@@ -1,12 +1,11 @@
 /// <reference path="../typings/mocha.d.ts"/>
 /// <reference path="../typings/chai.d.ts"/>
 
-import chai = require("chai");
-import assert = chai.assert;
-import Message = require("../src/message");
-import Segment = require("../src/segment");
-import EmptyNode = require("../src/emptyNode");
-import MessageHelper = require("./messageHelper");
+import { assert } from "chai";
+import Message from "../src/message";
+import Segment from "../src/segment";
+import EmptyNode from "../src/emptyNode";
+import * as MessageHelper from "./messageHelper";
 
 describe('Message', () => {
 

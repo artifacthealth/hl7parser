@@ -36,7 +36,7 @@ module.exports = function(grunt) {
                     noImplicitAny: true
                 },
                 src: ['src/**/*.ts'],
-                dest: 'build/'
+                dest: 'build/src'
             },
             tests: {
                 options: {

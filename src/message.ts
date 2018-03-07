@@ -1,11 +1,11 @@
-import Node = require("./node");
-import NodeBase = require('./nodeBase');
-import Delimiters = require("./delimiters");
-import SegmentList = require("./segmentList");
-import Segment = require("./segment");
-import Util = require("./util");
+import Node from "./node";
+import NodeBase from './nodeBase';
+import Delimiters from "./delimiters";
+import SegmentList from "./segmentList";
+import Segment from "./segment";
+import * as Util from "./util";
 
-class Message extends NodeBase {
+export default class Message extends NodeBase {
 
     private _delimiters: string;
     private _matchUnescape: RegExp;
@@ -219,5 +219,3 @@ class Message extends NodeBase {
         }
     }
 }
-
-export = Message;
