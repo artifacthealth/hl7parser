@@ -34,19 +34,16 @@ console.log(message.get("PID.5.2").toString()); // prints "Bob"
 
 See the [tests](https://github.com/artifacthealth/hl7parser/blob/master/tests/message.tests.ts) for more examples.
 
-
 ## Documentation
 
 <a name="hl7parser"></a>
 ## "hl7parser" Module
---------------------
 * [`Message`](#Message)
 * [`Node`](#Node)
 * [`create`](#create)
 
 <a name="Message"></a>
 ### Message Interface
---------------------
 An HL7 message.
 * [`addSegment`](#addSegment)
 * [`name`](#name)
@@ -193,7 +190,6 @@ __Returns:__ `boolean`
 
 <a name="Node"></a>
 ### Node Interface
---------------------
 A node in an HL7 message. Can represent a message, segment, field, component, or sub-component.
 * [`name`](#name)
 * [`length`](#length)
