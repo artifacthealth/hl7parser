@@ -1,7 +1,7 @@
 {
   "name": "hl7parser",
   "description": "HL7 2.x parser and generator.",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "author": {
     "name": "Artifact Health, LLC",
     "url": "http://www.artifacthealth.com"
