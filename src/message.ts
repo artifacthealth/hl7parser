@@ -20,7 +20,7 @@ export default class Message extends NodeBase {
 
         // make sure message starts with MSH segment
         if (text.slice(0, 3) != "MSH") {
-            throw new Error("Message must being with the MSH segment.");
+            throw new Error("Message must begin with the MSH segment.");
         }
 
         // read delimiters
